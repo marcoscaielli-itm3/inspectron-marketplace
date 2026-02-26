@@ -20,7 +20,7 @@ spec:
     spec:
       containers:
         - name: portal
-          image: northamerica-south1-docker.pkg.dev/cs-poc-d96nxrifs5uloipqz5ygs4p/itm3-registry/inspectron-portal:0b8db16c73eb10ece2678fd2854c6f582e69e0fb
+          image: northamerica-south1-docker.pkg.dev/cs-poc-d96nxrifs5uloipqz5ygs4p/itm3-registry/inspectron-portal:1.0.0
           ports:
             - containerPort: 80
           resources:

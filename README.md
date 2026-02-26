@@ -1,18 +1,47 @@
 # Inspectron – Pacote Google Cloud Marketplace
 
-Pacote Kubernetes para listagem do Inspectron no Google Cloud Marketplace.
+Pacote Kubernetes para listagem do **Inspectron** no Google Cloud Marketplace (ITM3).
 
-## Estrutura (placeholder)
+---
 
-- `app/` – Manifests Kubernetes (Deployments, Services, ConfigMaps) e recurso Application CR.
-- `schema/` – Schemas do deployer (se aplicável).
-- `LICENSE` – Licença do repositório (obrigatória para o Marketplace).
+## Visão geral
 
-## Próximos passos
+- **Inspectron** – Sistema de vistoria e inspeção com IA
+- **Componentes:** API (.NET) + Portal (SPA Angular servido por Nginx)
+- **Imagens:** `inspectron-api`, `inspectron-portal`, `inspectron/deployer` (Artifact Registry)
 
-1. Exportar do cluster GKE os manifests atuais (Deployments, Services, Ingress) do namespace `itm3` e colocar em `app/`.
-2. Adicionar o recurso [Application](https://cloud.google.com/marketplace/docs/partners/kubernetes/create-app-package) descrevendo a aplicação.
-3. Criar e publicar a imagem **deployer** que aplica esses manifests no cluster do cliente.
-4. Configurar repositório público (GitHub/GitLab) e submeter no Producer Portal.
+---
 
-Ver [CHECKLIST_GOOGLE_MARKETPLACE.md](../CHECKLIST_GOOGLE_MARKETPLACE.md) na raiz do POC.
+## Estrutura
+
+```
+marketplace-package/
+├── LICENSE
+├── README.md           (este arquivo)
+├── USER_GUIDE.md       (guia do usuário para implantação e uso)
+├── inspectron/
+│   └── app/
+│       ├── application.yaml
+│       ├── inspectron-api-deployment.yaml
+│       ├── inspectron-api-service.yaml
+│       ├── inspectron-portal-deployment.yaml
+│       └── inspectron-portal-service.yaml
+```
+
+---
+
+## Para usuários finais
+
+Consulte o **[USER_GUIDE.md](USER_GUIDE.md)** para:
+
+- Instalação via Console ou kubectl
+- Configuração pós-instalação
+- Uso básico, backup e atualização
+
+---
+
+## Para parceiros / desenvolvedores
+
+- **Deployer:** Imagem `inspectron/deployer:1.0.0` – aplica os manifests no cluster do cliente
+- **Repositório deployer:** `C:\sistemas\POC\deployer\` (schema, manifest templates, Dockerfile)
+- **Checklist e próximos passos:** `C:\sistemas\POC\CHECKLIST_GOOGLE_MARKETPLACE.md`

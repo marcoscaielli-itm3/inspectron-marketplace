@@ -20,7 +20,7 @@ spec:
     spec:
       containers:
         - name: api
-          image: northamerica-south1-docker.pkg.dev/cs-poc-d96nxrifs5uloipqz5ygs4p/itm3-registry/inspectron-api:5124d1639b3342574e163561fb05faf66d752ee3
+          image: northamerica-south1-docker.pkg.dev/cs-poc-d96nxrifs5uloipqz5ygs4p/itm3-registry/inspectron-api:1.0.0
           ports:
             - containerPort: 80
           env:
