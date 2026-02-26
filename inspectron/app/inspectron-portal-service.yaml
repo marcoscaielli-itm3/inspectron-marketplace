@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: inspectron-portal
+  labels:
+    app.kubernetes.io/name: inspectron
+    app.kubernetes.io/component: portal
+spec:
+  type: ClusterIP
+  selector:
+    app: inspectron-portal
+  ports:
+    - port: 80
+      targetPort: 80
+      name: http

@@ -1,0 +1,32 @@
+# Inspectron Portal - Deployment
+# Imagem: itm3-registry/inspectron-portal (Nginx + SPA)
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: inspectron-portal
+  labels:
+    app.kubernetes.io/name: inspectron
+    app.kubernetes.io/component: portal
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: inspectron-portal
+  template:
+    metadata:
+      labels:
+        app: inspectron-portal
+        app.kubernetes.io/name: inspectron
+    spec:
+      containers:
+        - name: portal
+          image: northamerica-south1-docker.pkg.dev/cs-poc-d96nxrifs5uloipqz5ygs4p/itm3-registry/inspectron-portal:0b8db16c73eb10ece2678fd2854c6f582e69e0fb
+          ports:
+            - containerPort: 80
+          resources:
+            requests:
+              memory: "64Mi"
+              cpu: "50m"
+            limits:
+              memory: "128Mi"
+              cpu: "200m"

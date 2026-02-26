@@ -1,0 +1,27 @@
+# Placeholder: Application CR para Google Cloud Marketplace
+# Documentação: https://cloud.google.com/marketplace/docs/partners/kubernetes/create-app-package
+#
+# Substituir por recurso real exportado/adaptado do cluster e preencher:
+# - metadata.name (nome do produto no Marketplace)
+# - spec.descriptor.displayName, description, links
+# - spec.selector (match dos recursos do app)
+# - annotation para GKE (service name) conforme exigência 2025
+#
+apiVersion: app.k8s.io/v1beta1
+kind: Application
+metadata:
+  name: inspectron
+  annotations:
+    # Exigido para novos listings GKE (jan 2025+)
+    cloud.google.com/marketplace-product-name: inspectron
+spec:
+  descriptor:
+    type: "Inspectron AI - Vistoria e inspeção"
+    displayName: "Inspectron"
+    description: "Sistema de vistoria e inspeção com IA (ITM3)."
+    links:
+      - description: Documentação
+        url: https://inspectron.com.br
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: inspectron

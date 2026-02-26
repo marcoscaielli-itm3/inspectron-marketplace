@@ -1,0 +1,39 @@
+# Inspectron API - Deployment
+# Imagem: itm3-registry/inspectron-api (Artifact Registry)
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: inspectron-api
+  labels:
+    app.kubernetes.io/name: inspectron
+    app.kubernetes.io/component: api
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: inspectron-api
+  template:
+    metadata:
+      labels:
+        app: inspectron-api
+        app.kubernetes.io/name: inspectron
+    spec:
+      containers:
+        - name: api
+          image: northamerica-south1-docker.pkg.dev/cs-poc-d96nxrifs5uloipqz5ygs4p/itm3-registry/inspectron-api:5124d1639b3342574e163561fb05faf66d752ee3
+          ports:
+            - containerPort: 80
+          env:
+            - name: ASPNETCORE_URLS
+              value: "http://+:80"
+          # Config sensível via Secret (criar no cluster do cliente):
+          # envFrom:
+          #   - secretRef:
+          #       name: inspectron-api-secrets
+          resources:
+            requests:
+              memory: "256Mi"
+              cpu: "100m"
+            limits:
+              memory: "512Mi"
+              cpu: "500m"
